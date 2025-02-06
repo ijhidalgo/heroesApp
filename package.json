@@ -1,12 +1,17 @@
 {
   "name": "heroes-app",
   "version": "0.0.0",
+  "comments": "npm install copyfiles --save-dev",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "delete:docs": "del docs",
+    "build:href": "ng build --base-href ./",
+    "copy:dist": "for /f %i in ('node -p \"require('./package.json').name\"') do copyfiles dist/%i/browser/* ./docs -f",
+    "build:git": "npm run delete:docs && npm run build:href && npm run copy:dist"
   },
   "private": true,
   "dependencies": {
