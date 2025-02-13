@@ -21,7 +21,8 @@
       "publisher": "DC Comics",
       "alter_ego": "Kal-El",
       "first_appearance": "Action Comics #1",
-      "characters": "Kal-El"
+      "characters": "Kal-El",
+      "alt_img": null
     },
     {
       "id": "dc-flash",
@@ -166,6 +167,15 @@
       "alter_ego": "Norrin Radd",
       "first_appearance": "The Fantastic Four #48",
       "characters": "Norrin Radd"
+    },
+    {
+      "id": "cIoJUNW",
+      "superhero": "Black Widow",
+      "publisher": "Marvel Comics",
+      "alter_ego": "Natasha Romanoff",
+      "first_appearance": "Tales of Suspense #52",
+      "characters": "Natasha Romanoff",
+      "alt_img": "assets/heroes/marvel-black.jpg"
     }
   ]
 }

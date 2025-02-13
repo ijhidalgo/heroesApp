@@ -1,12 +1,12 @@
 <h1>
-  Editar / Agregar
+  {{ currenHero.id ? 'Editar' : 'Agregar' }}
   héroe
-  <small>Superman</small>
+  <small *ngIf="currenHero.id">{{currenHero.superhero}}</small>
 </h1>
 
 <mat-divider class="mb-2"></mat-divider>
 
-<div class="grid">
+<form class="grid" [formGroup]="heroForm">
 
   <div class="col-12 sm:col-6">
     <mat-card>
@@ -17,6 +17,7 @@
             <input type="text"
             matInput
             required
+            formControlName="superhero"
             >
           </mat-form-field>
           <mat-form-field class="col-12 sm:col-6">
@@ -24,6 +25,7 @@
             <input type="text"
             matInput
             required
+            formControlName="alter_ego"
             >
           </mat-form-field>
 
@@ -32,6 +34,7 @@
             <input type="text"
             matInput
             required
+            formControlName="first_appearance"
             >
           </mat-form-field>
 
@@ -40,12 +43,15 @@
             <input type="text"
             matInput
             required
+            formControlName="characters"
             >
           </mat-form-field>
 
           <mat-form-field class="col-12">
             <mat-label>Publisher</mat-label>
-            <mat-select required="">
+            <mat-select required
+              formControlName="publisher"
+            >
               <mat-option *ngFor="let pub of publishers"
               [value]="pub.id"
               >
@@ -54,19 +60,30 @@
             </mat-select>
           </mat-form-field>
 
+          <mat-form-field class="col-12">
+            <mat-label>Alternative image</mat-label>
+            <input type="text"
+            matInput
+            formControlName="alt_img"
+            >
+          </mat-form-field>
+
         </div>
         <div class="flex justify-content-between">
           <button
+          *ngIf="currenHero.id"
+          (click)="onDeleteHero()"
             mat-flat-button
             color="warn"
           >
             <mat-icon>delete</mat-icon>
             Borrar
           </button>
-
+          <span></span>
           <button
             mat-flat-button
             color="primary"
+            (click)="onSubmit()"
           >
             <mat-icon>save</mat-icon>
             Guardar
@@ -79,8 +96,8 @@
 
   <div class="col-12 sm:col-6">
     <mat-card>
-      <img src="" alt="Imágen del héroe">
+      <img [src]="currenHero | heroImage" alt="Imágen del héroe">
     </mat-card>
   </div>
 
-</div>
+</form>
